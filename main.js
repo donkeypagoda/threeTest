@@ -8,50 +8,68 @@ cam.lookAt(new THREE.Vector3(0, 0, 0));
 
 let scene = new THREE.Scene();
 let polyArr = [];
+let size = 3;
 
-let poly1 = new Pentagon(5, [0,0,0]);
-scene.add(poly1.group);
-polyArr.push(poly1);
+let sizePick = document.querySelector("#sizePick");
+sizePick.onchange = () => {
+  // console.log(sizePick);
+  size = sizePick.value;
+}
 
-let poly2 = new Triangle(8, [0,0,0]);
-scene.add(poly2.group);
-polyArr.push(poly2);
+const circleAdd = document.querySelector("#circleAdd");
+circleAdd.onclick = () => {
+  let circleShape = new Circle(size, [0,0,0])
+  scene.add(circleShape.group);
+  polyArr.push(circleShape);
+}
 
-let poly3 = new Line(3, [0,0,0]);
-scene.add(poly3.group);
-polyArr.push(poly3);
+const lineAdd = document.querySelector("#lineAdd");
+lineAdd.onclick = () => {
+  let lineShape = new Line(size, [0,0,0])
+  scene.add(lineShape.group);
+  polyArr.push(lineShape);
+}
 
-let poly4 = new Heptagon(10, [0,0,0]);
-scene.add(poly4.group);
-polyArr.push(poly4);
+const triangleAdd = document.querySelector("#triangleAdd");
+triangleAdd.onclick = () => {
+  let triangleShape = new Triangle(size, [0,0,0])
+  scene.add(triangleShape.group);
+  polyArr.push(triangleShape);
+}
 
-let poly5 = new Circle(6, [0,0,0]);
-scene.add(poly5.group);
-polyArr.push(poly5);
+const squareAdd = document.querySelector("#squareAdd");
+squareAdd.onclick = () => {
+  let squareShape = new Square(size, [0,0,0])
+  scene.add(squareShape.group);
+  polyArr.push(squareShape);
+}
 
-let poly6 = new Hexagon(12, [0,0,0]);
-scene.add(poly6.group);
-polyArr.push(poly6);
+const pentagonAdd = document.querySelector("#pentagonAdd");
+pentagonAdd.onclick = () => {
+  let pentagonShape = new Pentagon(size, [0,0,0])
+  scene.add(pentagonShape.group);
+  polyArr.push(pentagonShape);
+}
 
-let poly7 = new Square(11, [0,0,0]);
-scene.add(poly7.group);
-polyArr.push(poly7);
+const hexagonAdd = document.querySelector("#hexagonAdd");
+hexagonAdd.onclick = () => {
+  let hexagonShape = new Hexagon(size, [0,0,0])
+  scene.add(hexagonShape.group);
+  polyArr.push(hexagonShape);
+}
+
+const heptagonAdd = document.querySelector("#heptagonAdd");
+heptagonAdd.onclick = () => {
+  let heptagonShape = new Heptagon(size, [0,0,0])
+  scene.add(heptagonShape.group);
+  polyArr.push(heptagonShape);
+}
 
 function animate(){
   requestAnimationFrame(animate);
   for(let i = 0; i < scene.children.length; i++){
     polyArr[i].rotate();
   }
-  // poly1.rotate();
-  //
-  // poly2.rotate();
-  //
-  // poly3.rotate();
-
-
-  // var quaternion4 = new THREE.Quaternion();
-  // quaternion4.setFromAxisAngle( new THREE.Vector3( 0, 0, 1 ), Math.PI / -175 );
-  // poly4.applyQuaternion( quaternion4 );
 
   renderer.render(scene, cam);
 }
