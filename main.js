@@ -7,39 +7,40 @@ cam.position.set(0, 0, 50);
 cam.lookAt(new THREE.Vector3(0, 0, 0));
 
 let scene = new THREE.Scene();
+let polyArr = [];
 
-let poly1 = helperPolygon(5, 5, [0,0,0]);
-scene.add(poly1);
+let poly1 = new Pentagon(5, [0,0,0]);
+scene.add(poly1.group);
+polyArr.push(poly1);
 
-let poly2 = helperPolygon(3, 8, [0,0,0]);
-scene.add(poly2);
+
+let poly2 = new Triangle(8, [0,0,0]);
+scene.add(poly2.group);
+polyArr.push(poly2);
 
 let poly3 = new Line(3, [0,0,0]);
-console.log(poly3.group);
 scene.add(poly3.group);
+polyArr.push(poly3);
 
-let poly4 = helperPolygon(7, 10, [0,0,0]);
-scene.add(poly4);
+let poly4 = new Heptagon(10, [0,0,0]);
+scene.add(poly4.group);
+polyArr.push(poly4);
 
 function animate(){
   requestAnimationFrame(animate);
-  var quaternion1 = new THREE.Quaternion();
-  quaternion1.setFromAxisAngle( new THREE.Vector3( 0, 0, 1 ), Math.PI / 365 );
-  poly1.applyQuaternion( quaternion1 );
-
-  var quaternion2 = new THREE.Quaternion();
-  quaternion2.setFromAxisAngle( new THREE.Vector3( 0, 0, 1 ), Math.PI / -365 );
-  poly2.applyQuaternion( quaternion2 );
-
-  // var quaternion3 = new THREE.Quaternion();
-  // poly3.group.quaternion.setFromAxisAngle( new THREE.Vector3( 0, 0, 1 ), Math.PI / 175 );
-  // poly3.group.applyQuaternion( poly3.group.quaternion );
-  poly3.rotate();
+  for(let i = 0; i < scene.children.length; i++){
+    polyArr[i].rotate();
+  }
+  // poly1.rotate();
+  //
+  // poly2.rotate();
+  //
+  // poly3.rotate();
 
 
-  var quaternion4 = new THREE.Quaternion();
-  quaternion4.setFromAxisAngle( new THREE.Vector3( 0, 0, 1 ), Math.PI / -175 );
-  poly4.applyQuaternion( quaternion4 );
+  // var quaternion4 = new THREE.Quaternion();
+  // quaternion4.setFromAxisAngle( new THREE.Vector3( 0, 0, 1 ), Math.PI / -175 );
+  // poly4.applyQuaternion( quaternion4 );
 
   renderer.render(scene, cam);
 }

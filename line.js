@@ -15,19 +15,16 @@ class Line {
     //
     this.rotationIncrement = Math.PI / 365;
     this.quaternion = new THREE.Quaternion();
-    this.rotate = () => {
-      this.quaternion.setFromAxisAngle( new THREE.Vector3( 0, 0, 1 ), this.rotationIncrement );
-      this.group.applyQuaternion(this.quaternion);
-    }
 
-
-
-    //the callback, could be used to determine gong attack times,
-    this.group.quaternion.onChange(function(){
-      h = ( 360 * ( 1.0 + Math.abs(this.group.quaternion.z) ) % 360 ) / 360;
-      console.log(this.group.quaternion.z);
+    // the callback, could be used to determine gong attack times, and all the other bullshit
+    this.group.quaternion.onChange(() => {
+      let h = ( 360 * ( 1.0 + Math.abs(this.group.quaternion.z) ) % 360 ) / 360;
       this.group.children[0].material.color.setHSL( h, 0.5, 0.5 );
     })
 
   } // end of constructor
+  rotate(){
+    this.quaternion.setFromAxisAngle( new THREE.Vector3( 0, 0, 1 ), this.rotationIncrement );
+    this.group.applyQuaternion(this.quaternion);
+  }
 }
