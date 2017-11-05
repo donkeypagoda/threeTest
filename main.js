@@ -22,35 +22,17 @@ camera.lookAt(new THREE.Vector3(0, 0, 0));
 var scene = new THREE.Scene();
 var material = new THREE.LineBasicMaterial({ color: 0x0000ff });
 var geometry = new THREE.Geometry();
-geometry.vertices.push(new THREE.Vector3(10, 10, 0));
-geometry.vertices.push(new THREE.Vector3(-10, 0, 0));
-geometry.vertices.push(new THREE.Vector3(10, -10, 0));
-geometry.vertices.push(new THREE.Vector3(10, 10, 0));
-var line = new THREE.Line(geometry, material);
-scene.add(line);
+let shape = helperPolygon(5, 5, [0,0,0])
+var poly = new THREE.Line(shape, material);
+scene.add(poly);
+
 function animate(){
   requestAnimationFrame(animate);
-  line.rotation.z += 0.01;
+  poly.rotation.z += 0.01;
   renderer.render(scene, camera);
 }
 animate()
 
-// hexagon
-// var numberOfSides = 6,
-//     size = 20,
-//     Xcenter = 25,
-//     Ycenter = 25;
-//
-// cxt.beginPath();
-// cxt.moveTo (Xcenter +  size * Math.cos(0), Ycenter +  size *  Math.sin(0));
-//
-// for (var i = 1; i <= numberOfSides;i += 1) {
-//     cxt.lineTo (Xcenter + size * Math.cos(i * 2 * Math.PI / numberOfSides), Ycenter + size * Math.sin(i * 2 * Math.PI / numberOfSides));
-// }
-//
-// cxt.strokeStyle = "#000000";
-// cxt.lineWidth = 1;
-// cxt.stroke();
 //
 // function animate() {
 // 	requestAnimationFrame( animate );
