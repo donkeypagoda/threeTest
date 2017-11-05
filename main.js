@@ -14,8 +14,8 @@ scene.add(poly1);
 let poly2 = helperPolygon(3, 8, [0,0,0]);
 scene.add(poly2);
 
-let poly3 = helperPolygon(2, 3, [0,0,0]);
-scene.add(poly3);
+let poly3 = new Line(3, [0,0,0]);
+scene.add(poly3.group);
 
 let poly4 = helperPolygon(7, 10, [0,0,0]);
 scene.add(poly4);
@@ -32,7 +32,7 @@ function animate(){
 
   var quaternion3 = new THREE.Quaternion();
   quaternion3.setFromAxisAngle( new THREE.Vector3( 0, 0, 1 ), Math.PI / 175 );
-  poly3.applyQuaternion( quaternion3 );
+  poly3.group.applyQuaternion( quaternion3 );
 
   var quaternion4 = new THREE.Quaternion();
   quaternion4.setFromAxisAngle( new THREE.Vector3( 0, 0, 1 ), Math.PI / -175 );
