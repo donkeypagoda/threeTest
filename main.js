@@ -25,7 +25,7 @@ function animate(){
   var quaternion1 = new THREE.Quaternion();
   quaternion1.setFromAxisAngle( new THREE.Vector3( 0, 0, 1 ), Math.PI / 365 );
   poly1.applyQuaternion( quaternion1 );
-  
+
   var quaternion2 = new THREE.Quaternion();
   quaternion2.setFromAxisAngle( new THREE.Vector3( 0, 0, 1 ), Math.PI / -365 );
   poly2.applyQuaternion( quaternion2 );

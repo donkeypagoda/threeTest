@@ -5,8 +5,8 @@ const helperPolygon = function (numbSides, size, centArr) {
   let shape = new THREE.Geometry();
 
   var spriteMap = new THREE.TextureLoader().load('circle.png');
-  var material =  new THREE.SpriteMaterial({map:spriteMap, color: 0xffffff, alphaTest: 0.5, transparent: true});
-  material.color.setHSL( 1.0, 0.3, 0.7 );
+  var spriteMaterial =  new THREE.SpriteMaterial({map:spriteMap, color: 0xffffff, alphaTest: 0.5, transparent: true});
+  spriteMaterial.color.setHSL( 1.0, 0.3, 0.7 );
 
   let lineMaterial = new THREE.LineBasicMaterial({ color: 0x0000ff });
 
@@ -14,7 +14,7 @@ const helperPolygon = function (numbSides, size, centArr) {
   shape.vertices.push(new THREE.Vector3(centArr[0] +  size * Math.cos(0), centArr[1] +  size *  Math.sin(0), centArr[2]))
 
   for (let i = 1; i <= numbSides; i++) {
-    const point = new THREE.Sprite(material)
+    const point = new THREE.Sprite(spriteMaterial)
     point.position.x = centArr[0] + size * Math.cos(i * 2 * Math.PI / numbSides);
     point.position.y = centArr[1] + size * Math.sin(i * 2 * Math.PI / numbSides);
     point.position.z = centArr[2];
@@ -27,9 +27,10 @@ const helperPolygon = function (numbSides, size, centArr) {
   }
   const line = new THREE.Line(shape, lineMaterial)
 
+  //the callback, could be used to determine gong attack times,
   group.quaternion.onChange(function(){
     h = ( 360 * ( 1.0 + Math.abs(group.quaternion.z) ) % 360 ) / 360;
-		material.color.setHSL( h, 0.5, 0.5 );
+		spriteMaterial.color.setHSL( h, 0.5, 0.5 );
   })
 
   group.add(line);
