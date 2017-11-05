@@ -13,7 +13,6 @@ let poly1 = new Pentagon(5, [0,0,0]);
 scene.add(poly1.group);
 polyArr.push(poly1);
 
-
 let poly2 = new Triangle(8, [0,0,0]);
 scene.add(poly2.group);
 polyArr.push(poly2);
@@ -25,6 +24,18 @@ polyArr.push(poly3);
 let poly4 = new Heptagon(10, [0,0,0]);
 scene.add(poly4.group);
 polyArr.push(poly4);
+
+let poly5 = new Circle(6, [0,0,0]);
+scene.add(poly5.group);
+polyArr.push(poly5);
+
+let poly6 = new Hexagon(12, [0,0,0]);
+scene.add(poly6.group);
+polyArr.push(poly6);
+
+let poly7 = new Square(11, [0,0,0]);
+scene.add(poly7.group);
+polyArr.push(poly7);
 
 function animate(){
   requestAnimationFrame(animate);
