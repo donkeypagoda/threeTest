@@ -19,7 +19,6 @@ const helperPolygon = function (numbSides, size, centArr) {
     point.position.y = centArr[1] + size * Math.sin(i * 2 * Math.PI / numbSides);
     point.position.z = centArr[2];
 
-
     // add sprite to group
     group.add(point);
 
