@@ -1,14 +1,8 @@
 const rotationTable = Array.from(new Array(2512), (x, i) => (i * 0.25) + 0.25);
 
-const helperPolygon = function (numbSides, size, centArr, malletColor, lineColor) {
+const helperPolygon = function (numbSides, size, centArr, malletMaterial, lineMaterial) {
   const group = new THREE.Group();
   let shape = new THREE.Geometry();
-
-  var malletMap = new THREE.TextureLoader().load('circle.png');
-  var malletMaterial =  new THREE.SpriteMaterial({map:malletMap, color: malletColor, alphaTest: 0.5, transparent: true});
-  malletMaterial.color.setHSL( 1.0, 0.3, 0.7 );
-
-  let lineMaterial = new THREE.LineBasicMaterial({ color: lineColor });
 
   //adding all the mallet and shape vertices
   shape.vertices.push(new THREE.Vector3(centArr[0] +  size * Math.cos(0), centArr[1] +  size *  Math.sin(0), centArr[2]))

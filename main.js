@@ -15,6 +15,7 @@ let poly2 = helperPolygon(3, 8, [0,0,0]);
 scene.add(poly2);
 
 let poly3 = new Line(3, [0,0,0]);
+console.log(poly3.group);
 scene.add(poly3.group);
 
 let poly4 = helperPolygon(7, 10, [0,0,0]);
@@ -30,9 +31,11 @@ function animate(){
   quaternion2.setFromAxisAngle( new THREE.Vector3( 0, 0, 1 ), Math.PI / -365 );
   poly2.applyQuaternion( quaternion2 );
 
-  var quaternion3 = new THREE.Quaternion();
-  quaternion3.setFromAxisAngle( new THREE.Vector3( 0, 0, 1 ), Math.PI / 175 );
-  poly3.group.applyQuaternion( quaternion3 );
+  // var quaternion3 = new THREE.Quaternion();
+  // poly3.group.quaternion.setFromAxisAngle( new THREE.Vector3( 0, 0, 1 ), Math.PI / 175 );
+  // poly3.group.applyQuaternion( poly3.group.quaternion );
+  poly3.rotate();
+
 
   var quaternion4 = new THREE.Quaternion();
   quaternion4.setFromAxisAngle( new THREE.Vector3( 0, 0, 1 ), Math.PI / -175 );
