@@ -26,5 +26,6 @@ class Pentagon {
   rotate(){
     this.quaternion.setFromAxisAngle( new THREE.Vector3( 0, 0, 1 ), this.rotationIncrement );
     this.group.applyQuaternion(this.quaternion);
+    // counter for number of rotations, total number of rotations divide by shape sides will be gong trigger point
   }
 }
