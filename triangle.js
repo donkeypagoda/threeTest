@@ -13,7 +13,7 @@ class Triangle {
     //build the a group with lines and mallets
     this.group = helperPolygon(this.numbSides, this.size, this.centArr, this.malletMaterial, this.lineMaterial);
     //
-    this.rotationIncrement = Math.PI / -365;
+    this.rotationIncrement = Math.PI / 100;
     this.quaternion = new THREE.Quaternion();
 
     // the callback, could be used to determine gong attack times, and all the other bullshit

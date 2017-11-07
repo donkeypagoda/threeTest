@@ -13,7 +13,7 @@ class Pentagon {
     //build the a group with lines and mallets
     this.group = helperPolygon(this.numbSides, this.size, this.centArr, this.malletMaterial, this.lineMaterial);
     //
-    this.rotationIncrement = Math.PI / 175;
+    this.rotationIncrement = Math.PI / 65;
     this.quaternion = new THREE.Quaternion();
 
     // the callback, could be used to determine gong attack times, and all the other bullshit
@@ -27,5 +27,6 @@ class Pentagon {
     this.quaternion.setFromAxisAngle( new THREE.Vector3( 0, 0, 1 ), this.rotationIncrement );
     this.group.applyQuaternion(this.quaternion);
     // counter for number of rotations, total number of rotations divide by shape sides will be gong trigger point
+    console.log(this.quaternion);
   }
 }

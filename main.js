@@ -12,7 +12,6 @@ let size = 3;
 
 let sizePick = document.querySelector("#sizePick");
 sizePick.onchange = () => {
-  // console.log(sizePick);
   size = sizePick.value;
 }
 
@@ -64,6 +63,11 @@ heptagonAdd.onclick = () => {
   scene.add(heptagonShape.group);
   polyArr.push(heptagonShape);
 }
+// let line = new Triangle(size, [0,0,0])
+// line.quaternion.setFromAxisAngle( new THREE.Vector3( 0, 0, 1 ), (2 * Math.PI) * size);
+// line.group.applyQuaternion(line.quaternion);
+// scene.add(line.group)
+// renderer.render(scene, cam);
 
 function animate(){
   requestAnimationFrame(animate);

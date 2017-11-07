@@ -28,6 +28,7 @@ class Circle {
 
     // the callback, could be used to determine gong attack times, and all the other bullshit
     this.group.quaternion.onChange(() => {
+      console.log(this.group.rotation);
       let h = ( 360 * ( 1.0 + Math.abs(this.group.quaternion.z) ) % 360 ) / 360;
       // note that if below children[1] is chosen, it changes the line instead of the mallet
       this.group.children[0].material.color.setHSL( h, 0.5, 0.5 );
@@ -35,6 +36,7 @@ class Circle {
 
   } // end of constructor
   rotate(){
+
     this.quaternion.setFromAxisAngle( new THREE.Vector3( 0, 0, 1 ), this.rotationIncrement );
     this.group.applyQuaternion(this.quaternion);
   }
