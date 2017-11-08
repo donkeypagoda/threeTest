@@ -9,64 +9,13 @@ class Line {
     this.malletMaterial.color.setHSL( 1.0, 0.3, 0.7 );
     this.lineColor = 0x0000ff;
     this.lineMaterial = new THREE.LineBasicMaterial({ color: this.lineColor });
-
-    //build the a group with lines and mallets
     this.group = helperPolygon(this.numbSides, this.size, this.centArr, this.malletMaterial, this.lineMaterial);
-    //
-    this.rotationIncrement = Math.PI / 150;
-    this.degreeIncrement = toDegree(this.rotationIncrement)
+    this.rotationIncrement = Math.PI / 365;
     this.quaternion = new THREE.Quaternion();
-    this.degs = 0;
-    this.gongDegs = makeGongDegArray(this.numbSides)
-    this.gongYet = []
-    this.gong1Yet = false;
-    this.gong2Yet = false;
+    this.currentPosition = 0;
+    this.gongValue = 0;
 
-
-    // the callback, could be used to determine gong attack times, and all the other bullshit
     this.group.quaternion.onChange(() => {
-      //gong triggering
-      this.degreeIncrement = toDegree(this.rotationIncrement)
-      this.gongYet = makeGongYetArray(this.numbSides);
-      const { w, z, x, y} = this.group.quaternion;
-      let t1 = 2.0 * (w * z + x * y)
-        let t2 = 1.0 - 2.0 * (Math.pow(y,2) + Math.pow(z,2))
-        let Z = Math.atan2(t1, t2)
-      if (Z > 0) {
-        this.degs = Math.floor(toDegree(Z))
-        console.log(this.gongYet);
-      }
-      else {
-        this.degs = Math.floor(toDegree(Z) + 360)
-        console.log(this.gongYet);
-      }
-      for (let i = 0; i < this.gongDegs.length; i++) {
-        if (this.degs > Math.floor((this.gongDegs[i] - this.degreeIncrement)) && this.degs < Math.floor((this.gongDegs[i] + this.degreeIncrement)) && this.gongYet[i] === false){
-          this.gongYet[i] = true;
-          console.log(this.gongYet);
-          console.log("!!! gong !!!" + i);
-        }
-        if (this.degs > Math.floor((this.gongDegs[i] + 25)) && this.degs < Math.floor(this.gongDegs[i]) + 50){
-          console.log('Reset boolean !!!!!!');
-          this.gongYet[i] = false
-        }
-      }
-
-      // if (this.degs === 1 && this.gong1Yet === false) {
-      //   console.log("gong 1 bitches");
-      //   this.gong1Yet = true;
-      // }
-      // if (this.degs > 3){
-      //   this.gong1Yet = false;
-      // }
-      // if (this.degs === 180 && this.gong2Yet === false) {
-      //   console.log("gong 2 bitches");
-      //   this.gong2Yet = true;
-      // }
-      // if (this.degs > 183){
-      //   this.gong2Yet = false;
-      // }
-
       //color changes
       let h = ( 360 * ( 1.0 + Math.abs(this.group.quaternion.z) ) % 360 ) / 360;
       // note that if below children[1] is chosen, it changes the line instead of the mallet
@@ -75,7 +24,19 @@ class Line {
 
   } // end of constructor
   rotate(){
-    this.quaternion.setFromAxisAngle( new THREE.Vector3( 0, 0, 1 ), this.rotationIncrement );
-    this.group.applyQuaternion(this.quaternion);
-  }
+      this.currentPosition += this.rotationIncrement;
+      
+      if (this.currentPosition > (2 * Math.PI)){
+        this.currentPosition = 0;
+        this.gongValue = 0;
+      }
+      if(this.currentPosition > this.gongValue ){
+        console.log('gong', this.gongValue);
+        const arc = (2 * Math.PI) / this.numbSides;
+        this.gongValue = this.gongValue + arc;
+      }
+
+      this.quaternion.setFromAxisAngle( new THREE.Vector3( 0, 0, 1 ), this.rotationIncrement );
+      this.group.applyQuaternion(this.quaternion);
+    }
 }
