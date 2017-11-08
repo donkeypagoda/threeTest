@@ -40,75 +40,20 @@ class Line {
         this.degs = Math.round(this.toDegree(Z) + 360)
         // console.log(toDegree(Z) + 360)
       }
-      if (this.degs > 0 && this.degs < 2 && this.gongYet === false) {
+      if (this.degs === 1 && this.gongYet === false) {
         console.log("gong 1 bitches");
         this.gongYet = true;
       }
       if (this.degs > 3){
         this.gongYet = false;
       }
-      if (this.degs === 180.0 && this.gongYet === false) {
+      if (this.degs === 180 && this.gongYet === false) {
         console.log("gong 2 bitches");
         this.gongYet = true;
       }
       if (this.degs > 183){
         this.gongYet = false;
       }
-
-
-      // console.log(this.group.quaternion.z);
-      // if(this.group.quaternion.z > 0){
-      //   if(this.check <= Math.round(100000 * this.group.quaternion.z)){
-      //     this.check = Math.round(100000 * this.group.quaternion.z)
-      //     this.hold = this.check;
-      //     // console.log(this.hold);
-      //     if (this.hold > 99900 && this.gong1Yet === false){   // 25000 is 100000 divided by 2 * numbSides
-      //       console.log("GONG1 BITCH");
-      //       this.gong1Yet = true;
-      //     }
-      //     else if (this.hold > 99999){
-      //       this.gong1Yet = false;
-      //     }
-      //   }
-      //   else{
-      //     this.hold = Math.round(100000 * (1 - this.group.quaternion.z))
-      //     // console.log(this.hold);
-      //     if (this.hold > 99900 && this.gong2Yet === false){   // 25000 is 100000 divided by 2 * numbSides
-      //       console.log("GONG2 BITCH");
-      //       this.gong2Yet = true;
-      //     }
-      //     else if (this.hold > 99999){
-      //       this.gong2Yet = false;
-      //     }
-      //   }
-      // }
-      // else if (this.group.quaternion.z < 0){
-      //   this.check = 0;
-      //   if(this.check <= Math.round(100000 * Math.abs(this.group.quaternion.z))){
-      //     this.check = Math.round(100000 * Math.abs(this.group.quaternion.z))
-      //     this.hold = Math.abs(this.check);
-      //     // console.log(this.hold);
-      //     if (this.hold > 99990 && this.gong1Yet === false){   // 25000 is 100000 divided by 2 * numbSides
-      //       console.log("GONG3 BITCH");
-      //       this.gong1Yet = true;
-      //     }
-      //     else if (this.hold > 99995){
-      //       this.gong1Yet = false;
-      //     }
-      //   }
-      //   else{
-      //     console.log("fuck");
-      //     this.hold = Math.round(100000 * (1 + this.group.quaternion.z))
-      //     // console.log(this.hold);
-      //     if (this.hold > 99900 && this.gong2Yet === false){   // 25000 is 100000 divided by 2 * numbSides
-      //       console.log("GONG4 BITCH");
-      //       this.gong2Yet = true;
-      //     }
-      //     else if (this.hold > 99999){
-      //       this.gong2Yet = false;
-      //     }
-      //   }
-      // }
 
       // color changes
       let h = ( 360 * ( 1.0 + Math.abs(this.group.quaternion.z) ) % 360 ) / 360;
