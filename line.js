@@ -18,7 +18,7 @@ class Line {
     this.quaternion = new THREE.Quaternion();
     this.check = 0;
     this.hold = 0;
-    this.gongYet = false;
+    this.gong1Yet = false;
     this.gong2Yet = false;
     this.toDegree = function(radians) {
       return radians * (180 / Math.PI);
@@ -40,19 +40,19 @@ class Line {
         this.degs = Math.round(this.toDegree(Z) + 360)
         // console.log(toDegree(Z) + 360)
       }
-      if (this.degs === 1 && this.gongYet === false) {
+      if (this.degs === 1 && this.gong1Yet === false) {
         console.log("gong 1 bitches");
-        this.gongYet = true;
+        this.gong1Yet = true;
       }
       if (this.degs > 3){
-        this.gongYet = false;
+        this.gong1Yet = false;
       }
-      if (this.degs === 180 && this.gongYet === false) {
+      if (this.degs === 180 && this.gong2Yet === false) {
         console.log("gong 2 bitches");
-        this.gongYet = true;
+        this.gong2Yet = true;
       }
       if (this.degs > 183){
-        this.gongYet = false;
+        this.gong2Yet = false;
       }
 
       // color changes
