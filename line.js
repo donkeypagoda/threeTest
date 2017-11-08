@@ -1,6 +1,7 @@
 class Line {
-  constructor (size, centArr) {
+  constructor (size, speed, centArr) {
     this.size = size;
+    this.speed = speed;
     this.centArr = centArr;
     this.numbSides = 2;
     this.malletColor = 0xffffff;
@@ -10,7 +11,7 @@ class Line {
     this.lineColor = 0x0000ff;
     this.lineMaterial = new THREE.LineBasicMaterial({ color: this.lineColor });
     this.group = helperPolygon(this.numbSides, this.size, this.centArr, this.malletMaterial, this.lineMaterial);
-    this.rotationIncrement = Math.PI / 365;
+    this.rotationIncrement = Math.PI / this.speed;
     this.quaternion = new THREE.Quaternion();
     this.currentPosition = 0;
     this.gongValue = 0;
@@ -25,13 +26,14 @@ class Line {
   } // end of constructor
   rotate(){
       this.currentPosition += this.rotationIncrement;
-      
+
       if (this.currentPosition > (2 * Math.PI)){
         this.currentPosition = 0;
         this.gongValue = 0;
       }
       if(this.currentPosition > this.gongValue ){
-        console.log('gong', this.gongValue);
+        lineGong();
+        // console.log('gong', this.gongValue);
         const arc = (2 * Math.PI) / this.numbSides;
         this.gongValue = this.gongValue + arc;
       }

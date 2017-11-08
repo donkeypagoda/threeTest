@@ -1,8 +1,8 @@
 class Circle {
-  constructor (size, centArr) {
+  constructor (size, speed, centArr) {
     this.size = size;
+    this.speed = speed;
     this.centArr = centArr;
-
     this.malletColor = 0xffffff;
     this.malletMap = new THREE.TextureLoader().load('circle.png');
     this.malletMaterial =  new THREE.SpriteMaterial({map: this.malletMap, color: this.malletColor, alphaTest: 0.5, transparent: true});
@@ -23,7 +23,7 @@ class Circle {
     this.circle.vertices.shift();
     this.group.add(new THREE.Line(this.circle, this.lineMaterial));
 
-    this.rotationIncrement = Math.PI / 365;
+    this.rotationIncrement = Math.PI / this.speed;
     this.quaternion = new THREE.Quaternion();
     this.currentPosition = 0;
     this.gongValue = 0;
@@ -45,7 +45,8 @@ class Circle {
         this.gongValue = 0;
       }
       if(this.currentPosition > this.gongValue ){
-        console.log('gong', this.gongValue);
+        circleGong();
+        // console.log('gong', this.gongValue);
         const arc = (2 * Math.PI) / this.numbSides;
         this.gongValue = this.gongValue + arc;
       }

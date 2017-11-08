@@ -1,6 +1,7 @@
 class Hexagon {
-  constructor (size, centArr) {
+  constructor (size, speed, centArr) {
     this.size = size;
+    this.speed = speed;
     this.centArr = centArr;
     this.numbSides = 6;
     this.malletColor = 0xffffff;
@@ -12,7 +13,7 @@ class Hexagon {
 
     //build the a group with lines and mallets
     this.group = helperPolygon(this.numbSides, this.size, this.centArr, this.malletMaterial, this.lineMaterial);
-    this.rotationIncrement = Math.PI / 150;
+    this.rotationIncrement = Math.PI / this.speed;
     this.degreeIncrement = toDegree(this.rotationIncrement)
     this.quaternion = new THREE.Quaternion();
     this.currentPosition = 0;

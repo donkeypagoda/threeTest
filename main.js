@@ -9,43 +9,49 @@ cam.lookAt(new THREE.Vector3(0, 0, 0));
 let scene = new THREE.Scene();
 let polyArr = [];
 let size = 3;
+let speed = 150;
 
 let sizePick = document.querySelector("#sizePick");
 sizePick.onchange = () => {
   size = sizePick.value;
 }
 
+let speedPick = document.querySelector("#speedPick");
+speedPick.onchange = () => {
+  speed = speedPick.value;
+}
+
 const circleAdd = document.querySelector("#circleAdd");
 circleAdd.onclick = () => {
-  let circleShape = new Circle(size, [0,0,0])
+  let circleShape = new Circle(size, speed, [0,0,0])
   scene.add(circleShape.group);
   polyArr.push(circleShape);
 }
 
 const lineAdd = document.querySelector("#lineAdd");
 lineAdd.onclick = () => {
-  let lineShape = new Line(size, [0,0,0])
+  let lineShape = new Line(size, speed, [0,0,0])
   scene.add(lineShape.group);
   polyArr.push(lineShape);
 }
 
 const triangleAdd = document.querySelector("#triangleAdd");
 triangleAdd.onclick = () => {
-  let triangleShape = new Triangle(size, [0,0,0])
+  let triangleShape = new Triangle(size, speed, [0,0,0])
   scene.add(triangleShape.group);
   polyArr.push(triangleShape);
 }
 
 const squareAdd = document.querySelector("#squareAdd");
 squareAdd.onclick = () => {
-  let squareShape = new Square(size, [0,0,0])
+  let squareShape = new Square(size, speed, [0,0,0])
   scene.add(squareShape.group);
   polyArr.push(squareShape);
 }
 
 const pentagonAdd = document.querySelector("#pentagonAdd");
 pentagonAdd.onclick = () => {
-  let pentagonShape = new Pentagon(size, [0,0,0])
+  let pentagonShape = new Pentagon(size, speed, [0,0,0])
   scene.add(pentagonShape.group);
   polyArr.push(pentagonShape);
 }
@@ -59,15 +65,10 @@ hexagonAdd.onclick = () => {
 
 const heptagonAdd = document.querySelector("#heptagonAdd");
 heptagonAdd.onclick = () => {
-  let heptagonShape = new Heptagon(size, [0,0,0])
+  let heptagonShape = new Heptagon(size, speed, [0,0,0])
   scene.add(heptagonShape.group);
   polyArr.push(heptagonShape);
 }
-// let line = new Triangle(size, [0,0,0])
-// line.quaternion.setFromAxisAngle( new THREE.Vector3( 0, 0, 1 ), (2 * Math.PI) * size);
-// line.group.applyQuaternion(line.quaternion);
-// scene.add(line.group)
-// renderer.render(scene, cam);
 
 function animate(){
   requestAnimationFrame(animate);
