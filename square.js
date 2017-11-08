@@ -31,9 +31,11 @@ class Square {
         let Z = Math.atan2(t1, t2)
       if (Z > 0) {
         this.degs = Math.floor(toDegree(Z))
+        console.log(this.degs);
       }
       else {
         this.degs = Math.floor(toDegree(Z) + 360)
+        console.log(this.degs);
       }
       for (let i = 0; i < this.gongDegs.length; i++) {
         if (this.degs > Math.floor((this.gongDegs[i] - this.degreeIncrement)) && this.degs < Math.floor((this.gongDegs[i] + this.degreeIncrement)) && this.gongYet[i] === false){

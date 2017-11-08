@@ -42,7 +42,7 @@ class Heptagon {
           this.gongYet[i] = true;
           console.log("gong" + i);
         }
-        if (this.degs > Math.floor(this.gongDegs[i])){ this.gongYet[i] = false}
+        if (this.degs > Math.floor(this.gongDegs[i] + (2 * this.degreeIncrement))){ this.gongYet[i] = false}
       }
 
       //color changes

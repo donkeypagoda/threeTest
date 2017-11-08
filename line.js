@@ -19,6 +19,8 @@ class Line {
     this.degs = 0;
     this.gongDegs = makeGongDegArray(this.numbSides)
     this.gongYet = []
+    this.gong1Yet = false;
+    this.gong2Yet = false;
 
 
     // the callback, could be used to determine gong attack times, and all the other bullshit
@@ -32,16 +34,22 @@ class Line {
         let Z = Math.atan2(t1, t2)
       if (Z > 0) {
         this.degs = Math.floor(toDegree(Z))
+        console.log(this.gongYet);
       }
       else {
         this.degs = Math.floor(toDegree(Z) + 360)
+        console.log(this.gongYet);
       }
       for (let i = 0; i < this.gongDegs.length; i++) {
         if (this.degs > Math.floor((this.gongDegs[i] - this.degreeIncrement)) && this.degs < Math.floor((this.gongDegs[i] + this.degreeIncrement)) && this.gongYet[i] === false){
           this.gongYet[i] = true;
-          console.log("gong" + i);
+          console.log(this.gongYet);
+          console.log("!!! gong !!!" + i);
         }
-        if (this.degs > Math.floor((this.gongDegs[i] + 25))){ this.gongYet[i] = false}
+        if (this.degs > Math.floor((this.gongDegs[i] + 25)) && this.degs < Math.floor(this.gongDegs[i]) + 50){
+          console.log('Reset boolean !!!!!!');
+          this.gongYet[i] = false
+        }
       }
 
       // if (this.degs === 1 && this.gong1Yet === false) {
