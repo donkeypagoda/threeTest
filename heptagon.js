@@ -20,11 +20,13 @@ class Heptagon {
     this.gongDegs = makeGongDegArray(this.numbSides)
     this.gongYet = []
 
+
     // the callback, could be used to determine gong attack times, and all the other bullshit
     this.group.quaternion.onChange(() => {
       //gong triggering
       this.degreeIncrement = toDegree(this.rotationIncrement)
       this.gongYet = makeGongYetArray(this.numbSides);
+      // console.log(this.gongDegs);
       const { w, z, x, y} = this.group.quaternion;
       let t1 = 2.0 * (w * z + x * y)
         let t2 = 1.0 - 2.0 * (Math.pow(y,2) + Math.pow(z,2))
@@ -40,7 +42,7 @@ class Heptagon {
           this.gongYet[i] = true;
           console.log("gong" + i);
         }
-        if (this.degs > Math.floor((this.gongDegs[i] + 25))){ this.gongYet[i] = false}
+        if (this.degs > Math.floor(this.gongDegs[i])){ this.gongYet[i] = false}
       }
 
       //color changes
