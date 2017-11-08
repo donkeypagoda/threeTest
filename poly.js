@@ -36,3 +36,6 @@ const makeGongYetArray = function(numbSides){
   }
   return gongYet;
 }
+const toDegree = function(radians) {
+  return radians * (180 / Math.PI);
+}
