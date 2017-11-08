@@ -161,5 +161,65 @@ function lineGong(){
   synth11.triggerAttackRelease(baseFreq * allTwelve[9], 0.1)
   synth12.triggerAttackRelease(baseFreq * 0.5, 0.04)
   synth13.triggerAttackRelease(baseFreq * allTwelve[4], 0.03)
+}
 
+let synth14 = new Tone.Synth
+synth14.oscillator.type = "sine"
+synth14.envelope.attack = 0.09;
+synth14.envelope.decay = 0.1;
+synth14.envelope.sustain = 0.1;
+synth14.envelope.release = 3;
+synth14.toMaster();
+
+let synth15 = new Tone.Synth
+synth15.oscillator.type = "sine"
+synth15.envelope.attack = 0.09;
+synth15.envelope.decay = 7;
+synth15.envelope.sustain = 7;
+synth15.envelope.release = 13;
+synth15.toMaster();
+
+let synth16 = new Tone.Synth
+synth16.oscillator.type = "sine"
+synth16.envelope.attack = 1;
+synth16.envelope.decay = 1;
+synth16.envelope.sustain = 1;
+synth16.envelope.release = 4;
+synth16.toMaster();
+
+let synth17 = new Tone.Synth
+synth17.oscillator.type = "sine"
+synth17.envelope.attack = 0.09;
+synth17.envelope.decay = 0.1;
+synth17.envelope.sustain = 0.4;
+synth17.envelope.release = 20;
+synth17.toMaster();
+
+let synth18 = new Tone.Synth
+synth18.oscillator.type = "sine"
+synth18.envelope.attack = 0.09;
+synth18.envelope.decay = 0.1;
+synth18.envelope.sustain = 0.1;
+synth18.envelope.release = 10;
+synth18.toMaster();
+
+
+//lfo shimmy
+let lfo3 = new Tone.LFO(5, -4, 4)
+
+lfo3.fan(synth14.oscillator.detune,
+        synth15.oscillator.detune,
+        synth16.oscillator.detune,
+        synth17.oscillator.detune,
+        synth18.oscillator.detune
+      )
+
+lfo3.start()
+
+function triangleGong(){
+  synth14.triggerAttackRelease(baseFreq * 0.5, 0.04)
+  synth15.triggerAttackRelease(baseFreq * 0.5 * allTwelve[4], 0.02)
+  synth16.triggerAttackRelease(baseFreq * allTwelve[4], 0.1)
+  synth17.triggerAttackRelease(baseFreq * allTwelve[9], 0.04)
+  synth18.triggerAttackRelease(baseFreq * 2, 0.03)
 }
