@@ -15,6 +15,7 @@ class Line {
     this.group = helperPolygon(this.numbSides, this.size, this.centArr, this.malletMaterial, this.lineMaterial);
     //
     this.rotationIncrement = Math.PI / 365;
+    this.degreeIncrement = this.toDegree(this.rotationIncrement)
     this.quaternion = new THREE.Quaternion();
     this.check = 0;
     this.hold = 0;
@@ -24,6 +25,7 @@ class Line {
       return radians * (180 / Math.PI);
     }
     this.degs = 0;
+    this.gongDegs = makeGongDegArray(this.numbSides)
 
     // the callback, could be used to determine gong attack times, and all the other bullshit
     this.group.quaternion.onChange(() => {
@@ -34,26 +36,26 @@ class Line {
         let Z = Math.atan2(t1, t2)
       if (Z > 0) {
         this.degs = Math.floor(this.toDegree(Z))
-        // console.log(this.toDegree(Z))
+        console.log(Math.floor(this.toDegree(Z)))
       }
       else {
-        this.degs = Math.round(this.toDegree(Z) + 360)
-        // console.log(toDegree(Z) + 360)
+        this.degs = Math.floor(this.toDegree(Z) + 360)
+        console.log(Math.floor(this.toDegree(Z) + 360))
       }
-      if (this.degs === 1 && this.gong1Yet === false) {
-        console.log("gong 1 bitches");
-        this.gong1Yet = true;
-      }
-      if (this.degs > 3){
-        this.gong1Yet = false;
-      }
-      if (this.degs === 180 && this.gong2Yet === false) {
-        console.log("gong 2 bitches");
-        this.gong2Yet = true;
-      }
-      if (this.degs > 183){
-        this.gong2Yet = false;
-      }
+      // if (this.degs === 1 && this.gong1Yet === false) {
+      //   console.log("gong 1 bitches");
+      //   this.gong1Yet = true;
+      // }
+      // if (this.degs > 3){
+      //   this.gong1Yet = false;
+      // }
+      // if (this.degs === 180 && this.gong2Yet === false) {
+      //   console.log("gong 2 bitches");
+      //   this.gong2Yet = true;
+      // }
+      // if (this.degs > 183){
+      //   this.gong2Yet = false;
+      // }
 
       // color changes
       let h = ( 360 * ( 1.0 + Math.abs(this.group.quaternion.z) ) % 360 ) / 360;

@@ -20,3 +20,11 @@ const helperPolygon = function (numbSides, size, centArr, malletMaterial, lineMa
   group.add(line);
   return group;
 }
+
+const makeGongDegArray = function(numbSides){
+  let gongDegs = [];
+  for (let i = 0; i < numbSides; i++){
+    gongDegs.push((360 / numbSides) * i + 1)
+  }
+  return gongDegs;
+}
