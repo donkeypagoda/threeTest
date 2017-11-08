@@ -28,3 +28,11 @@ const makeGongDegArray = function(numbSides){
   }
   return gongDegs;
 }
+
+const makeGongYetArray = function(numbSides){
+  let gongYet = [];
+  for (let i = 0; i < numbSides; i++){
+    gongYet.push(false)
+  }
+  return gongYet;
+}
