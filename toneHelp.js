@@ -274,3 +274,43 @@ function squareGong(){
   synth21.triggerAttackRelease(baseFreq * 0.5 * allTwelve[3], 0.1)
   synth22.triggerAttackRelease(baseFreq * allTwelve[3], 0.04)
 }
+
+let synth23 = new Tone.Synth
+synth23.oscillator.type = "sine"
+synth23.envelope.attack = 0.09;
+synth23.envelope.decay = 0.1;
+synth23.envelope.sustain = 0.1;
+synth23.envelope.release = 3;
+synth23.toMaster();
+
+let synth24 = new Tone.Synth
+synth24.oscillator.type = "sine"
+synth24.envelope.attack = 0.09;
+synth24.envelope.decay = 7;
+synth24.envelope.sustain = 7;
+synth24.envelope.release = 13;
+synth24.toMaster();
+
+let synth25 = new Tone.Synth
+synth25.oscillator.type = "sine"
+synth25.envelope.attack = 1;
+synth25.envelope.decay = 1;
+synth25.envelope.sustain = 1;
+synth25.envelope.release = 4;
+synth25.toMaster();
+
+//lfo shimmy
+let lfo5 = new Tone.LFO(5, -4, 4)
+
+lfo5.fan(synth23.oscillator.detune,
+        synth24.oscillator.detune,
+        synth25.oscillator.detune
+      )
+
+lfo5.start()
+
+function pentagonGong(){
+  synth23.triggerAttackRelease(baseFreq * allTwelve[5], 0.1)
+  synth24.triggerAttackRelease(baseFreq * 0.5 * allTwelve[7], 0.1)
+  synth25.triggerAttackRelease(baseFreq * allTwelve[3], 0.1)
+}

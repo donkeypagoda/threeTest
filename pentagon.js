@@ -35,7 +35,8 @@ class Pentagon {
       this.gongValue = 0;
     }
     if(this.currentPosition > this.gongValue ){
-      console.log('gong', this.gongValue);
+      pentagonGong();
+      // console.log('gong', this.gongValue);
       const arc = (2 * Math.PI) / this.numbSides;
       this.gongValue = this.gongValue + arc;
     }
