@@ -223,3 +223,54 @@ function triangleGong(){
   synth17.triggerAttackRelease(baseFreq * allTwelve[9], 0.04)
   synth18.triggerAttackRelease(baseFreq * 2, 0.03)
 }
+
+let synth19 = new Tone.Synth
+synth19.oscillator.type = "sine"
+synth19.envelope.attack = 0.09;
+synth19.envelope.decay = 0.1;
+synth19.envelope.sustain = 0.1;
+synth19.envelope.release = 3;
+synth19.toMaster();
+
+let synth20 = new Tone.Synth
+synth20.oscillator.type = "sine"
+synth20.envelope.attack = 0.09;
+synth20.envelope.decay = 7;
+synth20.envelope.sustain = 7;
+synth20.envelope.release = 13;
+synth20.toMaster();
+
+let synth21 = new Tone.Synth
+synth21.oscillator.type = "sine"
+synth21.envelope.attack = 1;
+synth21.envelope.decay = 1;
+synth21.envelope.sustain = 1;
+synth21.envelope.release = 4;
+synth21.toMaster();
+
+let synth22 = new Tone.Synth
+synth22.oscillator.type = "sine"
+synth22.envelope.attack = 0.09;
+synth22.envelope.decay = 0.1;
+synth22.envelope.sustain = 0.4;
+synth22.envelope.release = 20;
+synth22.toMaster();
+
+
+//lfo shimmy
+let lfo4 = new Tone.LFO(5, -4, 4)
+
+lfo4.fan(synth19.oscillator.detune,
+        synth20.oscillator.detune,
+        synth21.oscillator.detune,
+        synth22.oscillator.detune
+      )
+
+lfo4.start()
+
+function squareGong(){
+  synth19.triggerAttackRelease(baseFreq * 2, 0.04)
+  synth20.triggerAttackRelease(baseFreq * 0.5, 0.02)
+  synth21.triggerAttackRelease(baseFreq * 0.5 * allTwelve[3], 0.1)
+  synth22.triggerAttackRelease(baseFreq * allTwelve[3], 0.04)
+}
