@@ -9,8 +9,38 @@ canvas {
 }
 
 .blue{
-  background-color: blue;
+  background-color: lightblue;
 }
 button {
   background-color: blue;
+}
+.wrapper {
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  grid-gap: 3px;
+  grid-template-rows: minmax(50px, auto);
+}
+.butt {
+  grid-row: 2;
+  grid-column: 3;
+}
+.slide {
+  grid-row: 4;
+  grid-column: 3 / 6;
+  padding: 10px;
+}
+.wrap {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  /*grid-gap: 3px;*/
+  /*grid-template-rows: minmax(50px, auto);*/
+}
+.one {
+    grid-column: 1;
+}
+.two {
+    grid-column: 2;
+}
+#lastRemove {
+  background-color: red;
 }
