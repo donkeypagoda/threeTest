@@ -1,4 +1,4 @@
-let baseFreq = 250;
+let baseFreq = 175;
 
 // freq ratios for scales, might replace this with arrpeggios
 const allTwelve = [1, 16/15, 9/8, 6/5, 5/4, 4/3, 45/32, 3/2, 8/5, 5/3, 16/9, 15/8]

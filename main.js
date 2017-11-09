@@ -18,7 +18,8 @@ sizePick.onchange = () => {
 
 let speedPick = document.querySelector("#speedPick");
 speedPick.onchange = () => {
-  speed = speedPick.value;
+  speed = 3000 / speedPick.value;
+  console.log(speed);
 }
 
 const circleAdd = document.querySelector("#circleAdd");
@@ -26,6 +27,8 @@ circleAdd.onclick = () => {
   let circleShape = new Circle(size, speed, [0,0,0])
   scene.add(circleShape.group);
   polyArr.push(circleShape);
+  // console.log(circleShape.group);
+  console.log(scene);
 }
 
 const lineAdd = document.querySelector("#lineAdd");
@@ -33,6 +36,7 @@ lineAdd.onclick = () => {
   let lineShape = new Line(size, speed, [0,0,0])
   scene.add(lineShape.group);
   polyArr.push(lineShape);
+    console.log(scene);
 }
 
 const triangleAdd = document.querySelector("#triangleAdd");
@@ -68,6 +72,11 @@ heptagonAdd.onclick = () => {
   let heptagonShape = new Heptagon(size, speed, [0,0,0])
   scene.add(heptagonShape.group);
   polyArr.push(heptagonShape);
+}
+const lastRemove = document.querySelector("#lastRemove");
+lastRemove.onclick = () => {
+  scene.children.pop()
+  polyArr.pop()
 }
 
 function animate(){
