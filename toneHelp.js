@@ -310,9 +310,9 @@ lfo5.fan(synth23.oscillator.detune,
 lfo5.start()
 
 function pentagonGong(){
-  synth23.triggerAttackRelease(baseFreq * allTwelve[5], 0.2)
-  synth24.triggerAttackRelease(baseFreq * 0.5 * allTwelve[7], 0.2)
-  synth25.triggerAttackRelease(baseFreq * allTwelve[3], 0.2)
+  synth23.triggerAttackRelease(baseFreq * allTwelve[5], 0.1)
+  synth24.triggerAttackRelease(baseFreq * 0.5 * allTwelve[7], 0.1)
+  synth25.triggerAttackRelease(baseFreq * allTwelve[3], 0.1)
 }
 
 let synth26 = new Tone.Synth
@@ -350,9 +350,9 @@ lfo6.fan(synth26.oscillator.detune,
 lfo6.start()
 
 function hexagonGong(){
-  synth26.triggerAttackRelease(baseFreq * allTwelve[5], 0.2)
-  synth27.triggerAttackRelease(baseFreq * 0.5 * allTwelve[6], 0.08)
-  synth28.triggerAttackRelease(baseFreq * allTwelve[11], 0.2)
+  synth26.triggerAttackRelease(baseFreq * allTwelve[5], 0.1)
+  synth27.triggerAttackRelease(baseFreq * 0.5 * allTwelve[6], 0.06)
+  synth28.triggerAttackRelease(baseFreq * allTwelve[11], 0.1)
 }
 
 let synth29 = new Tone.Synth
@@ -382,6 +382,6 @@ lfo7.fan(synth29.oscillator.detune,
 lfo7.start()
 
 function heptagonGong(){
-  synth29.triggerAttackRelease(baseFreq * allTwelve[6], 0.08)
-  synth30.triggerAttackRelease(baseFreq * 2, 0.08)
+  synth29.triggerAttackRelease(baseFreq * allTwelve[6], 0.03)
+  synth30.triggerAttackRelease(baseFreq * 2, 0.03)
 }
