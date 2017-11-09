@@ -58,7 +58,7 @@ pentagonAdd.onclick = () => {
 
 const hexagonAdd = document.querySelector("#hexagonAdd");
 hexagonAdd.onclick = () => {
-  let hexagonShape = new Hexagon(size, [0,0,0])
+  let hexagonShape = new Hexagon(size, speed, [0,0,0])
   scene.add(hexagonShape.group);
   polyArr.push(hexagonShape);
 }

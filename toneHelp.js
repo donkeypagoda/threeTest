@@ -310,7 +310,78 @@ lfo5.fan(synth23.oscillator.detune,
 lfo5.start()
 
 function pentagonGong(){
-  synth23.triggerAttackRelease(baseFreq * allTwelve[5], 0.1)
-  synth24.triggerAttackRelease(baseFreq * 0.5 * allTwelve[7], 0.1)
-  synth25.triggerAttackRelease(baseFreq * allTwelve[3], 0.1)
+  synth23.triggerAttackRelease(baseFreq * allTwelve[5], 0.2)
+  synth24.triggerAttackRelease(baseFreq * 0.5 * allTwelve[7], 0.2)
+  synth25.triggerAttackRelease(baseFreq * allTwelve[3], 0.2)
+}
+
+let synth26 = new Tone.Synth
+synth26.oscillator.type = "sine"
+synth26.envelope.attack = 0.09;
+synth26.envelope.decay = 0.1;
+synth26.envelope.sustain = 0.1;
+synth26.envelope.release = 3;
+synth26.toMaster();
+
+let synth27 = new Tone.Synth
+synth27.oscillator.type = "sine"
+synth27.envelope.attack = 0.09;
+synth27.envelope.decay = 7;
+synth27.envelope.sustain = 7;
+synth27.envelope.release = 13;
+synth27.toMaster();
+
+let synth28 = new Tone.Synth
+synth28.oscillator.type = "sine"
+synth28.envelope.attack = 1;
+synth28.envelope.decay = 1;
+synth28.envelope.sustain = 1;
+synth28.envelope.release = 4;
+synth28.toMaster();
+
+//lfo shimmy
+let lfo6 = new Tone.LFO(5, -4, 4)
+
+lfo6.fan(synth26.oscillator.detune,
+        synth27.oscillator.detune,
+        synth28.oscillator.detune
+      )
+
+lfo6.start()
+
+function hexagonGong(){
+  synth26.triggerAttackRelease(baseFreq * allTwelve[5], 0.2)
+  synth27.triggerAttackRelease(baseFreq * 0.5 * allTwelve[6], 0.08)
+  synth28.triggerAttackRelease(baseFreq * allTwelve[11], 0.2)
+}
+
+let synth29 = new Tone.Synth
+synth29.oscillator.type = "sine"
+synth29.envelope.attack = 0.09;
+synth29.envelope.decay = 0.1;
+synth29.envelope.sustain = 0.1;
+synth29.envelope.release = 3;
+synth29.toMaster();
+
+let synth30 = new Tone.Synth
+synth30.oscillator.type = "sine"
+synth30.envelope.attack = 0.09;
+synth30.envelope.decay = 7;
+synth30.envelope.sustain = 7;
+synth30.envelope.release = 13;
+synth30.toMaster();
+
+
+//lfo shimmy
+let lfo7 = new Tone.LFO(5, -4, 4)
+
+lfo7.fan(synth29.oscillator.detune,
+        synth30.oscillator.detune
+      )
+
+lfo7.start()
+
+function heptagonGong(){
+  synth29.triggerAttackRelease(baseFreq * allTwelve[6], 0.08)
+  synth30.triggerAttackRelease(baseFreq * 2, 0.08)
 }
